@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 拼车图标 — 紫色双人拼车 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp"
+    android:viewportWidth="48" android:viewportHeight="48">
+    <path android:fillColor="#9C27B0" android:pathData="M12,30l-4,4v4h4v-2h24v2h4v-4l-4,-4z"/>
+    <path android:fillColor="#7B1FA2" android:pathData="M14,20l-2,10h24l-2,-10z"/>
+    <path android:fillColor="#E1BEE7" android:pathData="M16,22l-1.5,6h19l-1.5,-6z"/>
+    <path android:fillColor="#F5F5F5" android:pathData="M16,28m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"/>
+    <path android:fillColor="#F5F5F5" android:pathData="M32,28m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"/>
+    <path android:fillColor="#F5F5F5" android:fillAlpha="0.6" android:pathData="M20,24m-8,6a8,6 0,1 1,16 0a8,6 0,1 1,-16 0"/>
+</vector>

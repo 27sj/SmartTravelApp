@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- fragment_message.xml - 消息中心页面（WeChat 风格）
+     顶栏：标题 + "全部已读"
+     Tab 筛选：全部 / 订单通知 / 系统通知
+     RecyclerView 消息列表 + 空状态 + FAB -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_background">
+
+    <!-- 顶部标题 -->
+    <TextView
+        android:id="@+id/tv_message_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="消息中心"
+        android:textColor="@color/md_primary"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 全部已读 -->
+    <TextView
+        android:id="@+id/tv_mark_all_read"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="20dp"
+        android:text="全部已读"
+        android:textColor="@color/md_primary"
+        android:textSize="13sp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Tab 筛选行 -->
+    <LinearLayout
+        android:id="@+id/layout_tabs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_message_title">
+
+        <!-- 全部（选中） -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/chip_all"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="全部"
+            android:textColor="@color/md_surface"
+            android:textSize="12sp"
+            app:cornerRadius="15dp"
+            android:backgroundTint="@color/md_primary"
+            app:icon="@null"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:minHeight="0dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="0dp"
+            android:layout_marginEnd="8dp" />
+
+        <!-- 订单通知 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/chip_order"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="订单通知"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="12sp"
+            app:cornerRadius="15dp"
+            android:backgroundTint="@color/color_divider"
+            app:icon="@null"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:minHeight="0dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="0dp"
+            android:layout_marginEnd="8dp" />
+
+        <!-- 系统通知 -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/chip_system"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="系统通知"
+            android:textColor="@color/color_text_secondary"
+            android:textSize="12sp"
+            app:cornerRadius="15dp"
+            android:backgroundTint="@color/color_divider"
+            app:icon="@null"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:minHeight="0dp"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="0dp" />
+
+    </LinearLayout>
+
+    <!-- 消息列表 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_messages"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:paddingBottom="80dp"
+        android:paddingHorizontal="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_tabs" />
+
+    <!-- 空状态 -->
+    <LinearLayout
+        android:id="@+id/layout_empty_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_tabs">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_message_empty"
+            android:alpha="0.3"
+            android:importantForAccessibility="no" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/no_message"
+            android:textSize="15sp"
+            android:textColor="@color/color_text_hint" />
+    </LinearLayout>
+
+    <!-- FAB 写消息 -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_new_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/ic_edit"
+        app:backgroundTint="@color/md_primary"
+        app:tint="@color/md_surface"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

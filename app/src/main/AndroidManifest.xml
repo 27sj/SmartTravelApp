@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================
+     AndroidManifest.xml — 智慧出行打车系统
+     已集成高德地图 Android SDK
+     权限声明：网络、定位（前台+后台）、访问WiFi状态
+     Activity注册：首页、车型选择、订单确认、订单详情、历史订单、关于
+     ============================================================ -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ====== 高德地图 SDK 必需权限 ====== -->
+    <!-- 网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- 定位权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- 获取WiFi信息（辅助定位） -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <!-- 读取外部存储（保存订单截图等） -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <application
+        android:name=".AMapApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SmartTravel"
+        android:usesCleartextTraffic="true">
+
+        <!-- ====== 高德地图 API Key ====== -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="24dbf28446bf18841e09dd7b351dd2c2" />
+
+        <!-- ====== 启动画面（开机界面） ====== -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- ====== 首页（带底部导航） ====== -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.SmartTravel" />
+
+        <!-- ====== 车型选择页 ====== -->
+        <activity
+            android:name=".CarSelectActivity"
+            android:theme="@style/Theme.SmartTravel" />
+
+        <!-- ====== 订单确认页 ====== -->
+        <activity
+            android:name=".OrderConfirmActivity"
+            android:theme="@style/Theme.SmartTravel" />
+
+        <!-- ====== 订单详情页 ====== -->
+        <activity
+            android:name=".OrderDetailActivity"
+            android:theme="@style/Theme.SmartTravel" />
+
+        <!-- ====== 历史订单页 ====== -->
+        <activity
+            android:name=".HistoryOrderActivity"
+            android:theme="@style/Theme.SmartTravel" />
+
+        <!-- ====== 关于系统页 ====== -->
+        <activity
+            android:name=".AboutActivity"
+            android:theme="@style/Theme.SmartTravel" />
+
+        <!-- ====== 消息详情页 ====== -->
+        <activity
+            android:name=".MessageDetailActivity"
+            android:theme="@style/Theme.SmartTravel" />
+
+        <!-- ====== 数据分析中心 ====== -->
+        <activity
+            android:name=".statistics.StatisticsActivity"
+            android:theme="@style/Theme.SmartTravel" />
+
+        <!-- ====== 高德定位服务 ====== -->
+        <service
+            android:name="com.amap.api.location.APSService"
+            android:enabled="true"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- item_message.xml - 消息列表项（WeChat 风格）
+     左侧：圆形图标（48dp）
+     中间：标题（未读加粗）+ 内容预览 + 时间
+     右侧：红色未读徽章 -->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@color/md_surface"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="12dp">
+
+        <!-- 左侧圆形图标 -->
+        <ImageView
+            android:id="@+id/iv_msg_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_avatar_placeholder"
+            android:padding="10dp"
+            android:src="@drawable/ic_notification"
+            android:importantForAccessibility="no" />
+
+        <!-- 中间文字区 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- 标题 -->
+                <TextView
+                    android:id="@+id/tv_msg_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/color_text_primary"
+                    android:textSize="15sp"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <!-- 时间 -->
+                <TextView
+                    android:id="@+id/tv_msg_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:textSize="11sp"
+                    android:textColor="@color/color_text_hint" />
+            </LinearLayout>
+
+            <!-- 内容预览 -->
+            <TextView
+                android:id="@+id/tv_msg_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/color_text_secondary"
+                android:textSize="13sp"
+                android:maxLines="2"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+        <!-- 右侧未读徽章 -->
+        <TextView
+            android:id="@+id/tv_msg_unread_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="18dp"
+            android:minHeight="18dp"
+            android:gravity="center"
+            android:paddingHorizontal="5dp"
+            android:textSize="10sp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/bg_unread_badge"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

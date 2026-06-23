@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================
+     bottom_nav_menu.xml — 底部导航栏菜单项
+     三个选项：首页、消息、我的
+     使用矢量图标
+     ============================================================ -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/fragment_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/nav_home" />
+
+    <item
+        android:id="@+id/fragment_message"
+        android:icon="@drawable/ic_message"
+        android:title="@string/nav_message" />
+
+    <item
+        android:id="@+id/fragment_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/nav_profile" />
+
+</menu>

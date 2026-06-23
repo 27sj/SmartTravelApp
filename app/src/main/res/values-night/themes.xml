@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 夜间模式主题 — 深色背景，保持蓝色调 -->
+<resources>
+    <style name="Theme.SmartTravel" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/md_primary_light</item>
+        <item name="colorOnPrimary">#FF003258</item>
+        <item name="colorPrimaryContainer">#FF00497D</item>
+        <item name="colorOnPrimaryContainer">@color/md_primary_container</item>
+        <item name="colorSecondary">@color/md_secondary</item>
+        <item name="colorSecondaryContainer">#FF004A66</item>
+        <item name="colorOnSecondaryContainer">@color/md_secondary_container</item>
+        <item name="android:colorBackground">#FF1B1B1F</item>
+        <item name="colorSurface">#FF2B2930</item>
+        <item name="colorOnSurface">#FFE6E1E5</item>
+        <item name="colorOnSurfaceVariant">#FFCAC4D0</item>
+        <item name="colorError">#FFF2B8B5</item>
+        <item name="colorOutline">#FF938F99</item>
+
+        <item name="android:statusBarColor">#FF1B1B1F</item>
+        <item name="android:navigationBarColor">#FF2B2930</item>
+
+        <item name="bottomNavigationStyle">@style/Widget.SmartTravel.BottomNavigation</item>
+        <item name="materialCardViewStyle">@style/Widget.SmartTravel.Card</item>
+    </style>
+
+    <style name="Widget.SmartTravel.BottomNavigation" parent="Widget.Material3.BottomNavigationView">
+        <item name="backgroundTint">#FF2B2930</item>
+        <item name="itemActiveIndicatorStyle">@style/Widget.SmartTravel.NavIndicator</item>
+        <item name="itemIconTint">@color/nav_unselected</item>
+        <item name="itemTextColor">@color/nav_unselected</item>
+        <item name="elevation">8dp</item>
+    </style>
+
+    <style name="Widget.SmartTravel.NavIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">#FF00497D</item>
+    </style>
+
+    <style name="Widget.SmartTravel.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">@dimen/card_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="contentPadding">@dimen/padding_card</item>
+    </style>
+</resources>

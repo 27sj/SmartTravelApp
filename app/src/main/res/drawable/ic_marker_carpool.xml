@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ic_marker_carpool.xml — 拼车车辆Marker图标（橙色） -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="40"
+    android:viewportHeight="40">
+    <!-- 橙色圆形背景 -->
+    <path
+        android:fillColor="#FFFF9800"
+        android:pathData="M20,20m-18,0a18,18 0,1 1,36 0a18,18 0,1 1,-36 0" />
+    <!-- 白色拼车图标（两个简化人形） -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M10,14m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M10,22 L10,30 L14,30 L14,22 Z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M26,14m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M26,22 L26,30 L30,30 L30,22 Z" />
+    <!-- 连接线（表示共享） -->
+    <path
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="1.5"
+        android:fillColor="#00000000"
+        android:pathData="M13,18 L27,18" />
+</vector>

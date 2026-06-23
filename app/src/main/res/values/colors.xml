@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 颜色资源 — Material Design 3 商业级配色方案 -->
+<!-- 主色 #1677FF (Didi/Hellobike蓝)  辅助色 #52C41A  警告 #FAAD14  背景 #F5F7FA -->
+<resources>
+    <!-- ===== Material Design 3 主色调 ===== -->
+    <color name="md_primary">#FF1677FF</color>
+    <color name="md_primary_light">#FF409EFF</color>
+    <color name="md_primary_dark">#FF0954C5</color>
+    <color name="md_on_primary">#FFFFFFFF</color>
+    <color name="md_primary_container">#FFD6EAFF</color>
+    <color name="md_on_primary_container">#FF001E3D</color>
+
+    <!-- Secondary -->
+    <color name="md_secondary">#FF52C41A</color>
+    <color name="md_secondary_container">#FFD6F5C0</color>
+    <color name="md_on_secondary_container">#FF0A2D00</color>
+
+    <!-- Tertiary -->
+    <color name="md_tertiary">#FFFAAD14</color>
+    <color name="md_tertiary_container">#FFFDEBC2</color>
+
+    <!-- 背景与表面 -->
+    <color name="md_background">#FFF5F7FA</color>
+    <color name="md_surface">#FFFFFFFF</color>
+    <color name="md_surface_variant">#FFEEF1F6</color>
+    <color name="md_on_background">#FF1A1A1A</color>
+    <color name="md_on_surface">#FF1A1A1A</color>
+    <color name="md_on_surface_variant">#FF49454F</color>
+    <color name="md_outline">#FFD1D5DC</color>
+    <color name="md_outline_variant">#FFE7EAF0</color>
+
+    <!-- Error -->
+    <color name="md_error">#FFF44336</color>
+    <color name="md_error_container">#FFFCE4EC</color>
+
+    <!-- ===== 应用自定义颜色 ===== -->
+    <color name="color_blue_main">#FF1677FF</color>
+    <color name="color_blue_light">#FFE6F0FF</color>
+    <color name="color_green_online">#FF52C41A</color>
+    <color name="color_orange_warning">#FFFAAD14</color>
+    <color name="color_red_price">#FFF44336</color>
+
+    <!-- 文字色 -->
+    <color name="color_text_primary">#FF1F2937</color>
+    <color name="color_text_secondary">#FF6B7280</color>
+    <color name="color_text_hint">#FF9CA3AF</color>
+    <color name="color_text_white">#FFFFFFFF</color>
+
+    <!-- 分割线与边框 -->
+    <color name="color_divider">#FFF0F0F0</color>
+    <color name="color_divider_dark">#FFE5E7EB</color>
+
+    <!-- 阴影 -->
+    <color name="color_card_shadow">#1A000000</color>
+    <color name="color_shadow_heavy">#2A000000</color>
+    <color name="color_shadow_light">#0A000000</color>
+
+    <!-- 车辆类型 -->
+    <color name="color_bike_green">#FF52C41A</color>
+    <color name="color_car_blue">#FF1677FF</color>
+    <color name="color_carpool_orange">#FFFAAD14</color>
+
+    <!-- 地图相关 -->
+    <color name="color_map_bg">#FFD4E8F0</color>
+    <color name="color_white">#FFFFFFFF</color>
+    <color name="color_black">#FF000000</color>
+
+    <!-- 半透明 -->
+    <color name="white_alpha_90">#E6FFFFFF</color>
+    <color name="white_alpha_80">#CCFFFFFF</color>
+    <color name="white_alpha_60">#99FFFFFF</color>
+    <color name="black_alpha_30">#4D000000</color>
+    <color name="black_alpha_50">#80000000</color>
+
+    <!-- 统计深色主题 -->
+    <color name="stat_bg_dark">#FF0D111E</color>
+    <color name="stat_card_bg">#FF161B2B</color>
+    <color name="stat_card_border">#FF1E2640</color>
+    <color name="stat_text_primary">#FFE8ECF4</color>
+    <color name="stat_text_secondary">#FF8B95A7</color>
+    <color name="stat_accent_blue">#FF409EFF</color>
+    <color name="stat_accent_green">#FF52C41A</color>
+    <color name="stat_accent_orange">#FFFAAD14</color>
+    <color name="stat_accent_red">#FFF44336</color>
+
+    <!-- 消息中心 -->
+    <color name="msg_unread_bg">#FFFDE8E8</color>
+
+    <!-- BottomNavigation -->
+    <color name="nav_selected">@color/md_primary</color>
+    <color name="nav_unselected">#FF9CA3AF</color>
+
+    <!-- StepView -->
+    <color name="step_completed">@color/md_primary</color>
+    <color name="step_current">#FFFAAD14</color>
+    <color name="step_pending">#FFD1D5DC</color>
+
+    <!-- 成员等级 -->
+    <color name="vip_gold">#FFFFB300</color>
+    <color name="vip_silver">#FFB0BEC5</color>
+</resources>

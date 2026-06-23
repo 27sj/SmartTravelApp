@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 自定义样式 — 智慧出行打车系统 -->
+<resources>
+    <!-- 列表项卡片样式 -->
+    <style name="Widget.SmartTravel.ListItem" parent="">
+        <item name="cardCornerRadius">@dimen/card_radius</item>
+        <item name="cardElevation">2dp</item>
+        <item name="contentPadding">0dp</item>
+    </style>
+</resources>

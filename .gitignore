@@ -1,0 +1,21 @@
+# Android/Gradle 编译垃圾
+*.apk
+*.ap_
+*.dex
+*.class
+build/
+app/build/
+.gradle/
+gradle-app.setting
+
+# 本地配置文件（含个人路径）
+local.properties
+
+# IDE 配置（每个人电脑不一样）
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# 日志文件
+*.log

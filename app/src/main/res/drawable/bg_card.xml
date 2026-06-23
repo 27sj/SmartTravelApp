@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 卡片背景 — 白色圆角+阴影通过elevation实现，此文件仅用于纯色填充 -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/md_surface" />
+    <corners android:radius="@dimen/card_radius" />
+</shape>

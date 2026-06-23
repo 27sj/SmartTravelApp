@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 字符串资源 — 智慧出行打车系统 -->
+<resources>
+    <string name="app_name">智慧出行</string>
+
+    <!-- 首页 -->
+    <string name="search_hint">输入目的地</string>
+    <string name="current_location">当前位置</string>
+    <string name="my_location">当前位置</string>
+    <string name="btn_call_taxi">立即叫车</string>
+
+    <!-- 车型选择 -->
+    <string name="select_car_title">选择车型</string>
+    <string name="car_economy">经济快车</string>
+    <string name="car_premium">优享快车</string>
+    <string name="car_taxi">出租车</string>
+    <string name="car_carpool">拼车</string>
+
+    <!-- 订单确认 -->
+    <string name="order_confirm_title">确认订单</string>
+    <string name="start_point">起点</string>
+    <string name="end_point">终点</string>
+    <string name="car_type">车型</string>
+    <string name="estimated_fee">预计费用</string>
+    <string name="btn_confirm">确认呼叫</string>
+    <string name="matching_driver">正在为您匹配司机…</string>
+
+    <!-- 订单详情 -->
+    <string name="order_detail_title">订单详情</string>
+    <string name="order_no">订单号</string>
+    <string name="driver_name">司机</string>
+    <string name="plate_no">车牌号</string>
+    <string name="vehicle_model">车辆型号</string>
+    <string name="rating">评分</string>
+    <string name="est_arrive">预计到达</string>
+
+    <!-- 订单进度 -->
+    <string name="step_accepted">已接单</string>
+    <string name="step_on_way">司机前往上车点</string>
+    <string name="step_boarded">乘客上车</string>
+    <string name="step_in_transit">行程进行中</string>
+    <string name="step_completed">已完成</string>
+
+    <!-- 底部导航 -->
+    <string name="nav_home">首页</string>
+    <string name="nav_order">订单</string>
+    <string name="nav_message">消息</string>
+    <string name="nav_profile">我的</string>
+
+    <!-- 我的页面 -->
+    <string name="profile_username">智慧出行用户</string>
+    <string name="profile_phone">UID20260001</string>
+    <string name="profile_history">历史订单</string>
+    <string name="profile_coupon">优惠券</string>
+    <string name="profile_settings">设置</string>
+    <string name="profile_about">关于系统</string>
+    <string name="profile_logout">退出登录</string>
+
+    <!-- 历史订单 -->
+    <string name="history_title">历史订单</string>
+    <string name="no_order">暂无订单记录</string>
+    <string name="delete_confirm">确定删除此订单？</string>
+    <string name="btn_delete">删除</string>
+
+    <!-- 消息 -->
+    <string name="no_message">暂无消息</string>
+    <string name="system_notify">系统通知</string>
+
+    <!-- 关于 -->
+    <string name="about_title">关于智慧出行</string>
+    <string name="about_version">版本 1.0.0</string>
+    <string name="about_desc">智慧出行打车系统是一款面向大学课程设计的演示应用，模拟网约车核心流程，采用Material Design 3设计风格。\n\n本应用仅供课程设计演示使用，不接入真实网约车平台。</string>
+
+    <!-- 司机信息占位 -->
+    <string name="driver_default_name">王师傅</string>
+    <string name="driver_default_plate">粤A12345</string>
+    <string name="driver_default_car">比亚迪秦PLUS</string>
+
+    <!-- 通用 -->
+    <string name="loading">加载中…</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="back">返回</string>
+    <string name="ok">好的</string>
+    <string name="btn_complete_order">确认完成</string>
+
+    <!-- ===== 首页车辆信息模块 ===== -->
+    <string name="ride_type_carpool">拼车</string>
+    <string name="ride_type_express">快车</string>
+    <string name="ride_type_premium">专车</string>
+    <string name="estimated_time">约5分钟</string>
+    <string name="btn_go_now">立即出发</string>
+
+    <!-- ===== 消息中心 ===== -->
+    <string name="message_center">消息中心</string>
+    <string name="mark_all_read">全部已读</string>
+    <string name="stat_total_orders">总订单数</string>
+    <string name="stat_total_spending">累计消费</string>
+    <string name="stat_carbon_reduction">累计减碳量</string>
+
+    <!-- ===== 个人中心 ===== -->
+    <string name="vip_gold">黄金会员</string>
+    <string name="profile_orders">订单</string>
+    <string name="profile_spending">消费</string>
+    <string name="profile_carbon">减碳</string>
+    <string name="history_orders">历史订单</string>
+    <string name="my_coupons">优惠券</string>
+    <string name="settings">设置</string>
+    <string name="about_system">关于系统</string>
+    <string name="help_feedback">帮助与反馈</string>
+    <string name="data_center">数据分析中心</string>
+
+    <!-- ===== 车辆信息 ===== -->
+    <string name="view_details">查看详情</string>
+    <string name="book_now">立即预约</string>
+    <string name="select_vehicle">选择此车辆</string>
+    <string name="battery_label">电量</string>
+    <string name="range_label">续航</string>
+    <string name="distance_label">距离</string>
+</resources>

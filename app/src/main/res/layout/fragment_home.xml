@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_home.xml — 全屏地图 + 浮动搜索栏 + 增强 BottomSheet
+    CoordinatorLayout 根布局，MapView 全屏铺满
+    浮动搜索 CardView 悬于顶部，底部 BottomSheet 可拖拽
+-->
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_background"
+    android:fitsSystemWindows="true">
+
+    <!-- ===== 高德地图 — 全屏铺满 ===== -->
+    <com.amap.api.maps.MapView
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- ===== 浮动搜索栏（浮于地图之上，居中顶部） ===== -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/floating_search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:background="@color/white_alpha_90"
+        app:cardCornerRadius="@dimen/search_bar_radius"
+        app:cardElevation="6dp"
+        app:cardPreventCornerOverlap="false"
+        app:contentPadding="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@color/white_alpha_90">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/margin_small"
+            android:paddingVertical="@dimen/margin_small">
+
+            <!-- 当前地址行 -->
+            <TextView
+                android:id="@+id/tv_search_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/my_location"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/color_text_primary"
+                android:textStyle="bold"
+                android:drawableStart="@drawable/ic_location_on"
+                android:drawablePadding="4dp"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <!-- 目的地搜索输入框 -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeColor="@color/md_primary"
+                app:boxCornerRadiusTopEnd="@dimen/search_bar_radius"
+                app:boxCornerRadiusTopStart="@dimen/search_bar_radius"
+                app:boxCornerRadiusBottomEnd="@dimen/search_bar_radius"
+                app:boxCornerRadiusBottomStart="@dimen/search_bar_radius"
+                app:endIconMode="clear_text"
+                app:endIconDrawable="@drawable/ic_clear"
+                app:startIconDrawable="@drawable/ic_search"
+                app:startIconTint="@color/color_text_hint"
+                app:hintEnabled="false">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_search_destination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/search_hint"
+                    android:textSize="@dimen/text_size_body"
+                    android:textColor="@color/color_text_primary"
+                    android:textColorHint="@color/color_text_hint"
+                    android:inputType="text"
+                    android:imeOptions="actionSearch"
+                    android:paddingVertical="8dp"
+                    android:background="@null" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ===== 底部 BottomSheet（起点/终点/车型/费用/出发） ===== -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_sheet"
+        android:backgroundTint="@color/md_surface"
+        app:cardCornerRadius="@dimen/bottom_sheet_radius"
+        app:cardElevation="12dp"
+        app:cardPreventCornerOverlap="false"
+        app:behavior_peekHeight="200dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <LinearLayout
+            android:id="@+id/bottom_sheet_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/margin_large"
+            android:paddingTop="@dimen/margin_small"
+            android:paddingBottom="@dimen/margin_large">
+
+            <!-- 拖拽手柄 -->
+            <View
+                android:layout_width="36dp"
+                android:layout_height="4dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_sheet_handle"
+                android:layout_marginBottom="@dimen/margin_medium" />
+
+            <!-- 当前位置（起点） -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="6dp">
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/circle_green" />
+
+                <TextView
+                    android:id="@+id/tv_home_location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/my_location"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/color_text_primary"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+            </LinearLayout>
+
+            <!-- 目的地 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="4dp">
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/circle_red" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_home_destination"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:hint="请选择目的地"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/color_text_primary"
+                    android:textColorHint="@color/color_text_hint"
+                    android:inputType="text"
+                    android:imeOptions="actionSearch"
+                    android:background="@null"
+                    android:paddingVertical="8dp" />
+
+            </LinearLayout>
+
+            <!-- 水平分隔线 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_divider"
+                android:layout_marginVertical="@dimen/margin_small" />
+
+            <!-- 车型选择 — Chip 组 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="start"
+                android:layout_marginVertical="@dimen/margin_small">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_ridetype_carpool"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:text="@string/ride_type_carpool"
+                    android:textSize="@dimen/text_size_body"
+                    android:textColor="@color/color_text_primary"
+                    app:chipBackgroundColor="@color/color_blue_light"
+                    app:chipCornerRadius="@dimen/chip_radius"
+                    app:chipIcon="@drawable/ic_carpool"
+                    app:chipIconVisible="true"
+                    app:chipIconSize="@dimen/icon_size_small"
+                    app:checkedIconVisible="false"
+                    android:checkable="true"
+                    android:checked="true" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_ridetype_express"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:text="@string/ride_type_express"
+                    android:textSize="@dimen/text_size_body"
+                    android:textColor="@color/color_text_primary"
+                    app:chipBackgroundColor="@color/md_surface_variant"
+                    app:chipCornerRadius="@dimen/chip_radius"
+                    app:chipIcon="@drawable/ic_car_2"
+                    app:chipIconVisible="true"
+                    app:chipIconSize="@dimen/icon_size_small"
+                    app:checkedIconVisible="false"
+                    android:checkable="true" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_ridetype_premium"
+                    style="@style/Widget.Material3.Chip.Assist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ride_type_premium"
+                    android:textSize="@dimen/text_size_body"
+                    android:textColor="@color/color_text_primary"
+                    app:chipBackgroundColor="@color/md_surface_variant"
+                    app:chipCornerRadius="@dimen/chip_radius"
+                    app:chipIcon="@drawable/ic_car_3"
+                    app:chipIconVisible="true"
+                    app:chipIconSize="@dimen/icon_size_small"
+                    app:checkedIconVisible="false"
+                    android:checkable="true" />
+
+            </LinearLayout>
+
+            <!-- 水平分隔线 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_divider"
+                android:layout_marginVertical="@dimen/margin_small" />
+
+            <!-- 预估费用 + 预估时间 + 出发按钮（整行） -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/margin_small">
+
+                <!-- 费用 + 时间 -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="start"
+                    android:weightSum="2">
+
+                    <!-- 预估费用 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/estimated_fee"
+                            android:textSize="@dimen/text_size_xs"
+                            android:textColor="@color/color_text_hint" />
+
+                        <TextView
+                            android:id="@+id/tv_est_fee"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="@dimen/text_size_xl"
+                            android:textColor="@color/color_red_price"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <!-- 预估时间 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/estimated_time"
+                            android:textSize="@dimen/text_size_xs"
+                            android:textColor="@color/color_text_hint" />
+
+                        <TextView
+                            android:id="@+id/tv_est_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="@dimen/text_size_xl"
+                            android:textColor="@color/color_text_primary"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- 立即出发按钮 -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_go_now"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/button_height"
+                    android:text="@string/btn_call_taxi"
+                    android:textSize="@dimen/text_size_large"
+                    android:textColor="@color/md_on_primary"
+                    android:paddingHorizontal="@dimen/margin_large"
+                    android:backgroundTint="@color/md_primary"
+                    app:cornerRadius="@dimen/button_radius"
+                    app:icon="@drawable/ic_taxi"
+                    app:iconGravity="textStart"
+                    app:iconSize="@dimen/icon_size_small" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

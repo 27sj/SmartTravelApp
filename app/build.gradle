@@ -1,0 +1,77 @@
+// ============================================================
+// 模块级 build.gradle — 智慧出行打车系统
+// 使用 Material Design 3 + Java + XML 构建
+// ============================================================
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.example.smarttravel'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.example.smarttravel'
+        minSdk 26                          // Android 8.0+，覆盖99%设备
+        targetSdk 35
+        versionCode 1
+        versionName '1.0.0'
+
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // Java 版本配置
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    // 启用 ViewBinding
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    // ========== AndroidX 核心 ==========
+    implementation 'androidx.core:core:1.15.0'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+
+    // ========== 导航组件 ==========
+    implementation 'androidx.navigation:navigation-fragment:2.8.5'
+    implementation 'androidx.navigation:navigation-ui:2.8.5'
+
+    // ========== RecyclerView ==========
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
+
+    // ========== CardView ==========
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    // ========== SwipeRefreshLayout ==========
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
+    // ========== 高德地图 SDK ==========
+    // 3D地图 V10.0+ 已内置定位功能，无需单独添加定位SDK
+    implementation 'com.amap.api:3dmap:10.0.600'
+    // 搜索服务（POI搜索、地理编码、输入提示等）
+    // 注：使用本地 JAR，已剔除与 3dmap 冲突的 com.amap.apis.utils.core 类
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // ========== MPAndroidChart 图表库 ==========
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+    // ========== 测试 ==========
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+}

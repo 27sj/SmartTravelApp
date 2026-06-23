@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================
+     bottom_sheet_vehicle_detail.xml — 车辆详情底部弹窗 (v2)
+     图片英雄头 + 现代卡片信息展示
+     ============================================================ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="0dp"
+    android:background="#FFF5F7FA">
+
+    <!-- 拖拽手柄 -->
+    <View
+        android:layout_width="36dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_sheet_handle"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="0dp" />
+
+    <!-- ===== 英雄图片区域 ===== -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_vehicle_image_placeholder"
+        android:layout_marginTop="0dp">
+
+        <!-- 居中车辆图标 -->
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_car_2"
+            android:contentDescription="车辆图片" />
+
+        <!-- 左上类型标签 -->
+        <TextView
+            android:id="@+id/tv_veh_type_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:paddingHorizontal="12dp"
+            android:gravity="center"
+            android:background="@drawable/bg_badge_car"
+            android:textSize="11sp"
+            android:textColor="#FFFFFFFF"
+            android:text="共享汽车" />
+
+        <!-- 底部详情入口 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="16dp"
+            android:text="查看详情 →"
+            android:textSize="13sp"
+            android:textColor="#FF1677FF"
+            android:textStyle="bold" />
+
+    </FrameLayout>
+
+    <!-- ===== 卡片信息区域 (白色卡片圆角顶部, 微叠图片) ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="-20dp"
+        android:background="@drawable/bg_bottom_sheet_card"
+        android:padding="16dp">
+
+        <!-- 车辆名称 + 状态行 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:id="@+id/tv_veh_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="车辆名称"
+                android:textSize="20sp"
+                android:textColor="#FF1F2937"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- 状态色点 -->
+                <View
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_dot_green" />
+
+                <TextView
+                    android:id="@+id/tv_veh_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="可租用"
+                    android:textSize="13sp"
+                    android:textColor="#FF6B7280" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- 车辆编号 + 车牌行 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/tv_veh_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="车辆编号"
+                android:textSize="13sp"
+                android:textColor="#FF6B7280"
+                android:layout_marginEnd="20dp" />
+
+            <TextView
+                android:id="@+id/tv_veh_plate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="粤B·XXXXX"
+                android:textSize="13sp"
+                android:textColor="#FF6B7280" />
+
+            <TextView
+                android:id="@+id/tv_veh_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="0sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFF0F0F0"
+            android:layout_marginBottom="12dp" />
+
+        <!-- ===== 3个状态卡片 ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="12dp">
+
+            <!-- 电量 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="10dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_stat_card_blue">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_battery"
+                    android:layout_marginBottom="4dp"
+                    android:contentDescription="电量" />
+
+                <TextView
+                    android:id="@+id/tv_veh_battery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textSize="14sp"
+                    android:textColor="#FF1F2937"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="电量%"
+                    android:textSize="10sp"
+                    android:textColor="#FF6B7280" />
+
+            </LinearLayout>
+
+            <!-- 续航 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="10dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_stat_card_blue">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_range"
+                    android:layout_marginBottom="4dp"
+                    android:contentDescription="续航" />
+
+                <TextView
+                    android:id="@+id/tv_veh_range"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textSize="14sp"
+                    android:textColor="#FF1F2937"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="续航km"
+                    android:textSize="10sp"
+                    android:textColor="#FF6B7280" />
+
+            </LinearLayout>
+
+            <!-- 距离 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="10dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_stat_card_blue">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_distance"
+                    android:layout_marginBottom="4dp"
+                    android:contentDescription="距离" />
+
+                <TextView
+                    android:id="@+id/tv_veh_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textSize="14sp"
+                    android:textColor="#FF1F2937"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="距离m"
+                    android:textSize="10sp"
+                    android:textColor="#FF6B7280" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFF0F0F0"
+            android:layout_marginBottom="12dp" />
+
+        <!-- ===== 费用明细 (2列网格) ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp">
+
+            <!-- 起步费用 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="起步费用"
+                    android:textSize="12sp"
+                    android:textColor="#FF6B7280"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:id="@+id/tv_veh_base_fare"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textSize="14sp"
+                    android:textColor="#FF1F2937"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- 里程费用 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="里程费用"
+                    android:textSize="12sp"
+                    android:textColor="#FF6B7280"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:id="@+id/tv_veh_per_km"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textSize="14sp"
+                    android:textColor="#FF1F2937"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <!-- 时间费用 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="时间费用"
+                    android:textSize="12sp"
+                    android:textColor="#FF6B7280"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:id="@+id/tv_veh_per_min"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textSize="14sp"
+                    android:textColor="#FF1F2937"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- 距离 -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="距离"
+                    android:textSize="12sp"
+                    android:textColor="#FF6B7280"
+                    android:layout_marginBottom="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textSize="14sp"
+                    android:textColor="#FF1F2937"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFF0F0F0"
+            android:layout_marginBottom="12dp" />
+
+        <!-- ===== 预计费用 ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="预计费用"
+                android:textSize="14sp"
+                android:textColor="#FF6B7280" />
+
+            <TextView
+                android:id="@+id/tv_veh_estimated_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥--"
+                android:textSize="24sp"
+                android:textColor="#FFF44336"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- ===== 立即预约按钮 ===== -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_select_vehicle"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="立即预约"
+            android:textSize="16sp"
+            android:textColor="#FFFFFFFF"
+            android:backgroundTint="#FF1677FF"
+            app:cornerRadius="24dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

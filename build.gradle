@@ -1,0 +1,5 @@
+// 项目级 build.gradle — 全局插件与依赖配置
+plugins {
+    id 'com.android.application' version '8.9.1' apply false
+    id 'org.jetbrains.kotlin.android' version '2.0.21' apply false
+}

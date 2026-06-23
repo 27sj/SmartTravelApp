@@ -1,0 +1,1088 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    fragment_statistics.xml — Dark Data Cockpit Theme
+    TabLayout + header stat cards + 5 section visibility toggle
+    IDs preserved for StatisticsFragment.java compatibility
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF0D111E"
+    android:orientation="vertical">
+
+    <!-- ===== Header Row: 3 Gradient Stat Cards ===== -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:paddingBottom="0dp">
+
+        <!-- Card 1: 总订单数 (Blue gradient) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_card_gradient_blue"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="总订单数"
+                android:textSize="11sp"
+                android:textColor="#B3FFFFFF" />
+
+            <TextView
+                android:id="@+id/tv_total_orders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textSize="24sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="笔"
+                android:textSize="10sp"
+                android:textColor="#80FFFFFF" />
+        </LinearLayout>
+
+        <!-- Card 2: 累计消费 (Green gradient) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/bg_card_gradient_green"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="累计消费"
+                android:textSize="11sp"
+                android:textColor="#B3FFFFFF" />
+
+            <TextView
+                android:id="@+id/tv_total_spending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textSize="24sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="元"
+                android:textSize="10sp"
+                android:textColor="#80FFFFFF" />
+        </LinearLayout>
+
+        <!-- Card 3: 累计减碳量 (Orange gradient) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/bg_card_gradient_orange"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="累计减碳量"
+                android:textSize="11sp"
+                android:textColor="#B3FFFFFF" />
+
+            <TextView
+                android:id="@+id/tv_total_carbon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textSize="24sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kgCO₂"
+                android:textSize="10sp"
+                android:textColor="#80FFFFFF" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- ===== TabLayout Section Switcher ===== -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="4dp"
+        android:background="#FF161B2B"
+        app:tabTextColor="#FF8B95A7"
+        app:tabSelectedTextColor="#FF409EFF"
+        app:tabIndicatorColor="#FF409EFF"
+        app:tabIndicatorHeight="2dp"
+        app:tabMode="scrollable"
+        app:tabMinWidth="56dp"
+        app:tabPaddingEnd="8dp"
+        app:tabPaddingStart="8dp"
+        app:tabBackground="@drawable/bg_stat_card" />
+
+    <!-- ===== Content Sections (Visibility Toggle) ===== -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- ===== Section 1: 出行需求分析 ===== -->
+        <ScrollView
+            android:id="@+id/section_demand"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:paddingTop="4dp">
+
+                <!-- 总出行量 + 日均出行量 cards -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <!-- Card: 总出行量 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/bg_stat_card"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="总出行量"
+                            android:textSize="12sp"
+                            android:textColor="#FF8B95A7" />
+
+                        <TextView
+                            android:id="@+id/tv_total_trips"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="28sp"
+                            android:textColor="#FFE8ECF4"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="次"
+                            android:textSize="11sp"
+                            android:textColor="#FF8B95A7" />
+                    </LinearLayout>
+
+                    <!-- Card: 日均出行量 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/bg_stat_card"
+                        android:orientation="vertical"
+                        android:padding="14dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="日均出行量"
+                            android:textSize="12sp"
+                            android:textColor="#FF8B95A7" />
+
+                        <TextView
+                            android:id="@+id/tv_daily_avg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="28sp"
+                            android:textColor="#FFE8ECF4"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="次/日"
+                            android:textSize="11sp"
+                            android:textColor="#FF8B95A7" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Chart: 周出行趋势 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_stat_card_blue"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="周出行趋势"
+                        android:textSize="13sp"
+                        android:textColor="#FF409EFF"
+                        android:textStyle="bold" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/chart_weekly"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
+
+                <!-- Chart: 月度出行趋势 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_stat_card_blue"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="月度出行趋势"
+                        android:textSize="13sp"
+                        android:textColor="#FF409EFF"
+                        android:textStyle="bold" />
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/chart_monthly"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- ===== Section 2: 时段热力分布 ===== -->
+        <ScrollView
+            android:id="@+id/section_heat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:paddingTop="4dp">
+
+                <!-- 高峰时段分析双卡片 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <!-- 早高峰 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/bg_stat_card"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="早高峰"
+                            android:textSize="11sp"
+                            android:textColor="#FF8B95A7" />
+
+                        <TextView
+                            android:id="@+id/tv_peak_morning"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="22sp"
+                            android:textColor="#FF409EFF"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <!-- 晚高峰 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/bg_stat_card"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="晚高峰"
+                            android:textSize="11sp"
+                            android:textColor="#FF8B95A7" />
+
+                        <TextView
+                            android:id="@+id/tv_peak_evening"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="22sp"
+                            android:textColor="#FF409EFF"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 高峰分析结果文本 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_stat_card"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="分析结果"
+                        android:textSize="13sp"
+                        android:textColor="#FF409EFF"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="4dp" />
+                    <TextView
+                        android:id="@+id/tv_peak_analysis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:textSize="12sp"
+                        android:textColor="#FF8B95A7"
+                        android:lineSpacingExtra="3dp" />
+                </LinearLayout>
+
+                <!-- Chart: 时段热力图（折线图） -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_stat_card_blue"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="时段热力分布"
+                        android:textSize="13sp"
+                        android:textColor="#FF409EFF"
+                        android:textStyle="bold" />
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/chart_time_slot"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
+
+                <!-- Chart: 时段柱状图 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_stat_card_blue"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="时段分布柱状图"
+                        android:textSize="13sp"
+                        android:textColor="#FF409EFF"
+                        android:textStyle="bold" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/chart_heat_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
+
+                <!-- 时段详情 -->
+                <LinearLayout
+                    android:id="@+id/layout_time_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_stat_card"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="时段统计详情"
+                        android:textSize="13sp"
+                        android:textColor="#FF409EFF"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- ===== Section 3: 出行方式结构 ===== -->
+        <ScrollView
+            android:id="@+id/section_mode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:paddingTop="4dp">
+
+                <!-- 方式占比双卡片 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <!-- 共享单车 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/bg_stat_card"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="共享单车"
+                            android:textSize="11sp"
+                            android:textColor="#FF8B95A7" />
+
+                        <TextView
+                            android:id="@+id/tv_bike_share"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="22sp"
+                            android:textColor="#FF52C41A"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="%"
+                            android:textSize="10sp"
+                            android:textColor="#FF8B95A7" />
+                    </LinearLayout>
+
+                    <!-- 共享汽车 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/bg_stat_card"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="共享汽车"
+                            android:textSize="11sp"
+                            android:textColor="#FF8B95A7" />
+
+                        <TextView
+                            android:id="@+id/tv_car_share"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="22sp"
+                            android:textColor="#FF409EFF"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="%"
+                            android:textSize="10sp"
+                            android:textColor="#FF8B95A7" />
+                    </LinearLayout>
+
+                    <!-- 拼车 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/bg_stat_card"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="拼车"
+                            android:textSize="11sp"
+                            android:textColor="#FF8B95A7" />
+
+                        <TextView
+                            android:id="@+id/tv_carpool_share"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="22sp"
+                            android:textColor="#FFFAAD14"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="%"
+                            android:textSize="10sp"
+                            android:textColor="#FF8B95A7" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Chart: 方式结构图 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_stat_card_blue"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="方式结构占比"
+                        android:textSize="13sp"
+                        android:textColor="#FF409EFF"
+                        android:textStyle="bold" />
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/chart_mode_pie"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
+
+                <!-- 环状图 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_stat_card_blue"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="环状分布"
+                        android:textSize="13sp"
+                        android:textColor="#FF409EFF"
+                        android:textStyle="bold" />
+
+                    <com.github.mikephil.charting.charts.PieChart
+                        android:id="@+id/chart_mode_donut"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
+
+                <!-- 方式结构详情 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_stat_card"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="结构占比详情"
+                        android:textSize="13sp"
+                        android:textColor="#FF409EFF"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tv_mode_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:textSize="12sp"
+                        android:textColor="#FF8B95A7"
+                        android:layout_marginTop="4dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- ===== Section 4: 碳减排效益 ===== -->
+        <ScrollView
+            android:id="@+id/section_carbon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:paddingTop="4dp">
+
+                <!-- 减排三卡片 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <!-- 累计减排量 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/bg_stat_card"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="累计减排量"
+                            android:textSize="11sp"
+                            android:textColor="#FF8B95A7" />
+
+                        <TextView
+                            android:id="@+id/tv_carbon_total"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="20sp"
+                            android:textColor="#FF52C41A"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="kgCO₂"
+                            android:textSize="10sp"
+                            android:textColor="#FF8B95A7" />
+                    </LinearLayout>
+
+                    <!-- 月度减排量 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/bg_stat_card"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="月度减排量"
+                            android:textSize="11sp"
+                            android:textColor="#FF8B95A7" />
+
+                        <TextView
+                            android:id="@+id/tv_carbon_monthly"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="20sp"
+                            android:textColor="#FF409EFF"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="kgCO₂"
+                            android:textSize="10sp"
+                            android:textColor="#FF8B95A7" />
+                    </LinearLayout>
+
+                    <!-- 人均减排量 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/bg_stat_card"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="人均减排量"
+                            android:textSize="11sp"
+                            android:textColor="#FF8B95A7" />
+
+                        <TextView
+                            android:id="@+id/tv_carbon_per_capita"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="20sp"
+                            android:textColor="#FFFAAD14"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="kgCO₂/人"
+                            android:textSize="10sp"
+                            android:textColor="#FF8B95A7" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Chart: 碳减排趋势 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_stat_card_blue"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="碳减排趋势"
+                        android:textSize="13sp"
+                        android:textColor="#FF409EFF"
+                        android:textStyle="bold" />
+
+                    <com.github.mikephil.charting.charts.LineChart
+                        android:id="@+id/chart_carbon_trend"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- ===== Section 5: 运营效率分析 ===== -->
+        <ScrollView
+            android:id="@+id/section_operation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:paddingTop="4dp">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="#FF1E2640">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="平均距离" android:textSize="11sp" android:textColor="#FF8B95A7"/>
+                            <TextView android:id="@+id/tv_avg_distance"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="--" android:textSize="18sp" android:textColor="#FF409EFF"
+                                android:textStyle="bold" android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="平均时长" android:textSize="11sp" android:textColor="#FF8B95A7"/>
+                            <TextView android:id="@+id/tv_avg_duration"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="--" android:textSize="18sp" android:textColor="#FF52C41A"
+                                android:textStyle="bold" android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="利用率" android:textSize="11sp" android:textColor="#FF8B95A7"/>
+                            <TextView android:id="@+id/tv_util_rate"
+                                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                android:text="--" android:textSize="18sp" android:textColor="#FFFAAD14"
+                                android:textStyle="bold" android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- 高利用率排行 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_stat_card_blue"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="高利用率车辆 Top10"
+                        android:textSize="13sp"
+                        android:textColor="#FF52C41A"
+                        android:textStyle="bold" />
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/chart_high_util"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
+
+                <!-- 低利用率排行 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_stat_card_blue"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="低利用率车辆 Top10"
+                        android:textSize="13sp"
+                        android:textColor="#FFF44336"
+                        android:textStyle="bold" />
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/chart_low_util"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
+
+                <!-- 车辆使用排行 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_stat_card_blue"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="车辆使用次数排行"
+                        android:textSize="13sp"
+                        android:textColor="#FF409EFF"
+                        android:textStyle="bold" />
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/chart_usage_rank"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
+
+                <!-- 车辆排行双卡片 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="8dp">
+
+                    <!-- Top车辆 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/bg_stat_card"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Top 车辆"
+                            android:textSize="11sp"
+                            android:textColor="#FF8B95A7" />
+
+                        <TextView
+                            android:id="@+id/tv_vehicle_top"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="20sp"
+                            android:textColor="#FF52C41A"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <!-- Bottom车辆 -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:background="@drawable/bg_stat_card"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bottom 车辆"
+                            android:textSize="11sp"
+                            android:textColor="#FF8B95A7" />
+
+                        <TextView
+                            android:id="@+id/tv_vehicle_bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="20sp"
+                            android:textColor="#FFF44336"
+                            android:textStyle="bold"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Chart: 车辆使用排行 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/bg_stat_card_blue"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="车辆使用排行"
+                        android:textSize="13sp"
+                        android:textColor="#FF409EFF"
+                        android:textStyle="bold" />
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/chart_vehicle_usage"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="6dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+
+</LinearLayout>

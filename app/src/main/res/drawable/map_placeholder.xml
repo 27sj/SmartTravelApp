@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 地图占位背景 — 模拟高德地图的俯视街区图 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="400dp" android:height="300dp"
+    android:viewportWidth="400" android:viewportHeight="300">
+    <!-- 背景：浅蓝 -->
+    <path android:fillColor="#D4E8F0" android:pathData="M0,0h400v300H0z"/>
+    <!-- 道路：十字交叉 -->
+    <path android:fillColor="#FFFFFF" android:pathData="M0,120h400v60H0z"/>
+    <path android:fillColor="#FFFFFF" android:pathData="M150,0h60v300H-50z"/>
+    <!-- 次要道路 -->
+    <path android:fillColor="#E8E8E8" android:pathData="M0,220h200v30H0z"/>
+    <path android:fillColor="#E8E8E8" android:pathData="M280,0h30v200H280z"/>
+    <!-- 绿地 -->
+    <path android:fillColor="#7CB342" android:pathData="M40,30h80v60H40z"/>
+    <path android:fillColor="#7CB342" android:pathData="M280,240h80v40H280z"/>
+    <path android:fillColor="#7CB342" android:pathData="M40,240h80v40H40z"/>
+    <!-- 建筑 -->
+    <path android:fillColor="#C8D6D9" android:pathData="M240,30h40v40H240z"/>
+    <path android:fillColor="#C8D6D9" android:pathData="M300,30h60v50H300z"/>
+    <!-- 起点标记（蓝色圆点） -->
+    <path android:fillColor="#1976D2" android:pathData="M185,145m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0"/>
+    <path android:fillColor="#FFFFFF" android:pathData="M185,145m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0"/>
+    <!-- 终点标记（红色圆点） -->
+    <path android:fillColor="#F44336" android:pathData="M130,105m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0"/>
+    <path android:fillColor="#FFFFFF" android:pathData="M130,105m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0"/>
+    <!-- 路线虚线 -->
+    <path android:fillColor="#1976D2" android:strokeColor="#1976D2" android:strokeWidth="3"
+        android:pathData="M185,145L185,120L130,105"/>
+</vector>

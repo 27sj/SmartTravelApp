@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================
+     nav_graph.xml — 底部导航碎片切换图
+     包含三个 Fragment 目的地：home, message, profile
+     ============================================================ -->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_home">
+
+    <fragment
+        android:id="@+id/fragment_home"
+        android:name="com.example.smarttravel.HomeFragment"
+        android:label="@string/nav_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/fragment_message"
+        android:name="com.example.smarttravel.MessageFragment"
+        android:label="@string/nav_message"
+        tools:layout="@layout/fragment_message" />
+
+    <fragment
+        android:id="@+id/fragment_profile"
+        android:name="com.example.smarttravel.ProfileFragment"
+        android:label="@string/nav_profile"
+        tools:layout="@layout/fragment_profile" />
+
+</navigation>

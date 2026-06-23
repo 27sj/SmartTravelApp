@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 车辆图片2 — 红色轿车（对应比亚迪汉EV色系） -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="32dp" android:viewportWidth="48" android:viewportHeight="32">
+    <path android:fillColor="#C62828" android:pathData="M6,22 L8,24 L40,24 L42,22 L44,16 L40,8 L8,8 L4,16 Z"/>
+    <path android:fillColor="#E53935" android:pathData="M8,20 L8,10 L40,10 L40,20 Z"/>
+    <path android:fillColor="#B71C1C" android:pathData="M10,24 C10,26 12,27 14,26 C16,25 16,23 14,22 C12,21 10,22 10,24 Z"/>
+    <path android:fillColor="#B71C1C" android:pathData="M34,24 C34,26 36,27 38,26 C40,25 40,23 38,22 C36,21 34,22 34,24 Z"/>
+    <path android:fillColor="#B0BEC5" android:pathData="M18,12 L30,12 L30,20 L18,20 Z"/>
+</vector>

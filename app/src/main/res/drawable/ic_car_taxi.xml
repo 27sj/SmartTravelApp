@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 出租车图标 — 经典绿白出租 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp" android:height="48dp"
+    android:viewportWidth="48" android:viewportHeight="48">
+    <path android:fillColor="#4CAF50" android:pathData="M12,28l-4,6v4h4v-2h24v2h4v-4l-4,-6z"/>
+    <path android:fillColor="#388E3C" android:pathData="M14,16l-2,12h24l-2,-12z"/>
+    <path android:fillColor="#C8E6C9" android:pathData="M16,18l-1.5,8h19l-1.5,-8z"/>
+    <path android:fillColor="#F5F5F5" android:pathData="M16,26m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"/>
+    <path android:fillColor="#F5F5F5" android:pathData="M32,26m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"/>
+    <path android:fillColor="#FFEB3B" android:fillAlpha="0.7" android:pathData="M21,18l1,6h4l1,-6z"/>
+</vector>

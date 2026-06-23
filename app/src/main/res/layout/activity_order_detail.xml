@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================
+     activity_order_detail.xml — 订单详情页（升级版·含地图）
+     顶部：高德地图 MapView（高度300dp）
+     中部：司机信息卡片
+     下部：订单信息 + 行程进度
+     ============================================================ -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_background">
+
+    <!-- 顶部工具栏 -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/md_surface"
+        app:elevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/order_detail_title"
+        app:titleTextColor="@color/color_text_primary"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationContentDescription="@string/back" />
+
+    <!-- 高德地图（高度300dp）-->
+    <com.amap.api.maps.MapView
+        android:id="@+id/map_view"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/map_view">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin_medium">
+
+            <!-- ===== 路线信息卡片 ===== -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:strokeColor="@color/color_divider"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_card">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="行程信息"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_text_primary"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- 起点 -->
+                    <TextView
+                        android:id="@+id/tv_detail_start"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_text_primary"
+                        android:textSize="14sp"
+                        android:drawableStart="@drawable/ic_location_on"
+                        android:drawablePadding="8dp" />
+
+                    <TextView
+                        android:id="@+id/tv_detail_end"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:textColor="@color/color_red_price"
+                        android:textSize="14sp"
+                        android:drawableStart="@drawable/ic_location_target"
+                        android:drawablePadding="8dp" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ===== 司机信息卡片 ===== -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="@dimen/card_elevation"
+                app:strokeColor="@color/color_divider"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_card">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="司机信息"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_text_primary"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- 司机头部 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:id="@+id/iv_driver_avatar"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/ic_driver_avatar"
+                            android:background="@drawable/circle_blue_bg"
+                            android:padding="4dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:orientation="vertical">
+                            <TextView
+                                android:id="@+id/tv_driver_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/color_text_primary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                            <TextView
+                                android:id="@+id/tv_driver_rating"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textColor="@color/color_orange_warning"
+                                android:textSize="13sp"
+                                android:drawableStart="@drawable/ic_star"
+                                android:drawablePadding="4dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_driver_car"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="4dp"
+                            android:paddingHorizontal="8dp"
+                            android:background="@color/color_blue_light"
+                            android:textColor="@color/md_primary"
+                            android:textSize="12sp"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/color_divider"
+                        android:layout_marginVertical="12dp" />
+
+                    <!-- 车牌+订单号 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/plate_no"
+                                android:textColor="@color/color_text_hint"
+                                android:textSize="12sp" />
+                            <TextView
+                                android:id="@+id/tv_plate_no"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textColor="@color/color_text_primary"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_marginStart="12dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/order_no"
+                                android:textColor="@color/color_text_hint"
+                                android:textSize="12sp" />
+                            <TextView
+                                android:id="@+id/tv_order_no"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:textColor="@color/color_text_secondary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ===== 订单信息卡片 ===== -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="@dimen/card_elevation">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_card">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="订单信息"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_text_primary"
+                        android:layout_marginBottom="12dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="车型"
+                            android:textColor="@color/color_text_hint"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:id="@+id/tv_order_car_type"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="13sp"
+                            android:gravity="end" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="费用"
+                            android:textColor="@color/color_text_hint"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:id="@+id/tv_order_price"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/color_red_price"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:gravity="end" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="订单状态"
+                            android:textColor="@color/color_text_hint"
+                            android:textSize="13sp" />
+                        <TextView
+                            android:id="@+id/tv_order_status"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textColor="@color/color_green_online"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:gravity="end" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- ===== 行程进度(TimeLine) ===== -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="@dimen/card_elevation">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_card">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="行程进度"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/color_text_primary"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Step 1: 已接单 -->
+                    <LinearLayout
+                        android:id="@+id/step_accepted"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="32dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+                            <View
+                                android:id="@+id/dot_accepted"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:background="@drawable/step_dot_completed" />
+                            <View
+                                android:id="@+id/line_accepted"
+                                android:layout_width="3dp"
+                                android:layout_height="30dp"
+                                android:background="@color/step_completed" />
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_step_accepted"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/step_accepted"
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!-- Step 2: 司机前往上车点 -->
+                    <LinearLayout
+                        android:id="@+id/step_on_way"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="32dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+                            <View
+                                android:id="@+id/dot_on_way"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:background="@drawable/step_dot_completed" />
+                            <View
+                                android:id="@+id/line_on_way"
+                                android:layout_width="3dp"
+                                android:layout_height="30dp"
+                                android:background="@color/step_completed" />
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_step_on_way"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/step_on_way"
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!-- Step 3: 乘客上车 -->
+                    <LinearLayout
+                        android:id="@+id/step_boarded"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="32dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+                            <View
+                                android:id="@+id/dot_boarded"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:background="@drawable/step_dot_current" />
+                            <View
+                                android:id="@+id/line_boarded"
+                                android:layout_width="3dp"
+                                android:layout_height="30dp"
+                                android:background="@color/color_divider" />
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_step_boarded"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/step_boarded"
+                            android:textColor="@color/color_text_primary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!-- Step 4: 行程进行中 -->
+                    <LinearLayout
+                        android:id="@+id/step_in_transit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="32dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+                            <View
+                                android:id="@+id/dot_transit"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:background="@drawable/step_dot_pending" />
+                            <View
+                                android:id="@+id/line_transit"
+                                android:layout_width="3dp"
+                                android:layout_height="30dp"
+                                android:background="@color/color_divider" />
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_step_transit"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/step_in_transit"
+                            android:textColor="@color/color_text_secondary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!-- Step 5: 已完成 -->
+                    <LinearLayout
+                        android:id="@+id/step_completed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <LinearLayout
+                            android:layout_width="32dp"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center_horizontal">
+                            <View
+                                android:id="@+id/dot_completed"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:background="@drawable/step_dot_pending" />
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_step_completed"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/step_completed"
+                            android:textColor="@color/color_text_secondary"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
